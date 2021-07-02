@@ -11,8 +11,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:gravity="center_horizontal"
+        android:orientation="horizontal"
         android:paddingTop="12dp">
 
         <ImageView
@@ -22,20 +22,20 @@
 
         <TextView
             style="@style/TitleTextWhite"
-            android:text="@string/app_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="22dp"
+            android:text="@string/app_name"
             android:textSize="64sp"
-            android:textStyle="normal"/>
+            android:textStyle="normal" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/shape_white_top_round"
-        android:orientation="vertical"
-        android:gravity="top">
+        android:gravity="top"
+        android:orientation="vertical">
 
         <TextView
             style="@style/TitleTextDarkBlue"
@@ -53,9 +53,20 @@
             android:layout_height="380dp"
             android:layout_marginLeft="12dp"
             android:layout_marginRight="12dp"
-            tools:listitem="@layout/item_row_toko" />
+            tools:listitem="@layout/item_row_toko">
+
+<!--            <TextView-->
+<!--                android:id="@+id/tv_no_data"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:gravity="center"-->
+<!--                android:text="Tidak ada data tersedia"-->
+<!--                android:visibility="visible" />-->
+
+        </androidx.recyclerview.widget.RecyclerView>
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_scan_toko"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"

@@ -6,4 +6,9 @@
     <string name="reset">Reset</string>
     <string name="confirm">Confirm</string>
     <string name="scanner_toko">Scanner Toko</string>
+    <string name="scanner_produk">Scanner Produk</string>
+    <string name="detail_produk">Detail Produk</string>
+    <string name="rescan">Rescan</string>
+    <string name="exit">Exit</string>
+    <string name="lorem">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur harum, quidem delectus asperiores quasi inventore. Vero cupiditate, quas eaque suscipit alias delectus quasi quaerat fugit maxime reiciendis! Eum, ad velit.</string>
 </resources>
