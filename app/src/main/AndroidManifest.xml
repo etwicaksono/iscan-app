@@ -11,6 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
         <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".DetailProdukActivity"></activity>
         <activity android:name=".ScannerTokoActivity"></activity>
         <activity android:name=".ScannerProdukActivity"></activity>
         <activity android:name=".SplashScreenActivity">
