@@ -4,6 +4,7 @@
 
     <application
         android:allowBackup="true"
+        android:name=".KtApplication"
         android:icon="@mipmap/ic_launcher"
         android:hardwareAccelerated="true"
         android:label="@string/app_name"
