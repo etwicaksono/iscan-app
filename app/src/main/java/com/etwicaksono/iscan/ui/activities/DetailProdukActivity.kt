@@ -1,4 +1,4 @@
-package com.etwicaksono.iscan
+package com.etwicaksono.iscan.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
