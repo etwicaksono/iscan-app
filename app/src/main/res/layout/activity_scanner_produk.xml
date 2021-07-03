@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ScannerProdukActivity">
+    tools:context=".ui.activities.ScannerProdukActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -82,7 +82,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:visibility="gone">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_reset"
@@ -96,7 +97,8 @@
                 android:textSize="24sp"
                 app:cornerRadius="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent" />
+                app:layout_constraintLeft_toLeftOf="parent"
+                tools:viewBindingIgnore="true" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_confirm"
@@ -111,7 +113,8 @@
                 android:textSize="24sp"
                 app:cornerRadius="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintRight_toRightOf="parent" />
+                app:layout_constraintRight_toRightOf="parent"
+                tools:viewBindingIgnore="true" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

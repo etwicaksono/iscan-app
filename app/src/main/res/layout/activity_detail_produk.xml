@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".DetailProdukActivity">
+    tools:context=".ui.activities.DetailProdukActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,93 +37,116 @@
         android:gravity="top"
         android:orientation="vertical">
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/vp_foto"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/img_height"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginRight="12dp"
-            android:focusableInTouchMode="true" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="12dp"
-            android:gravity="center_horizontal">
-
-            <com.rd.PageIndicatorView
-                android:id="@+id/indicator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="16dp"
-                app:piv_animationType="scale"
-                app:piv_dynamicCount="true"
-                app:piv_selectedColor="@color/dark_blue"
-                app:piv_unselectedColor="@color/gray1"
-                tools:piv_padding="12dp"
-                tools:piv_radius="8dp" />
-        </RelativeLayout>
-
-        <TextView
-            android:id="@+id/tv_harga_produk"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            android:layout_marginTop="12dp"
-            tools:text="Rp. 175. 000" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="19dp"
-            android:layout_marginRight="12dp"
-            android:text="@string/barcode_text"
-            android:textColor="@color/dark_blue"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/tv_barcode_value"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="12dp"
-            android:layout_marginBottom="12dp"
-            android:drawableLeft="@drawable/barcode_black_1"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            tools:text="12345 54636 215468" />
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp">
-            <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv_detail_produk"
-            tools:text="@string/lorem"
-            android:justificationMode="inter_word"
-            android:textSize="14sp"
-            android:textColor="@color/black"/>
+            android:layout_height="550dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/vp_foto"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/img_height"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginRight="12dp"
+                    android:focusableInTouchMode="true" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="12dp"
+                    android:gravity="center_horizontal">
+
+                    <com.rd.PageIndicatorView
+                        android:id="@+id/indicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="16dp"
+                        app:piv_animationType="scale"
+                        app:piv_dynamicCount="true"
+                        app:piv_selectedColor="@color/dark_blue"
+                        app:piv_unselectedColor="@color/gray1"
+                        tools:piv_padding="12dp"
+                        tools:piv_radius="8dp" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_harga_produk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginRight="12dp"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    tools:text="Rp. 175. 000" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="19dp"
+                    android:layout_marginRight="12dp"
+                    android:text="@string/barcode_text"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_barcode_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:drawableLeft="@drawable/barcode_black_1"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    tools:text="12345 54636 215468" />
+
+
+                <TextView
+                    android:id="@+id/tv_nama_produk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/barcode_text"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="18sp"
+                    tools:text="Nama Produk" />
+
+                <TextView
+                    android:id="@+id/tv_detail_produk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:justificationMode="inter_word"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    tools:text="@string/lorem" />
+            </LinearLayout>
+
+
         </ScrollView>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            android:layout_marginTop="24dp">
+            android:layout_marginTop="24dp"
+            android:layout_marginRight="12dp">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_reset"

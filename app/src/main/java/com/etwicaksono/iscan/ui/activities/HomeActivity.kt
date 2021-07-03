@@ -1,9 +1,8 @@
-package com.etwicaksono.iscan
+package com.etwicaksono.iscan.ui.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import com.etwicaksono.iscan.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
@@ -16,7 +15,7 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnScanToko.setOnClickListener({
-            var intentScannerToko = Intent(this@HomeActivity,ScannerTokoActivity::class.java)
+            var intentScannerToko = Intent(this@HomeActivity, ScannerTokoActivity::class.java)
             startActivity(intentScannerToko)
         })
 

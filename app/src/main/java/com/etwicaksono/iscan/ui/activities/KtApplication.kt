@@ -1,4 +1,4 @@
-package com.etwicaksono.iscan
+package com.etwicaksono.iscan.ui.activities
 
 import androidx.multidex.MultiDexApplication
 

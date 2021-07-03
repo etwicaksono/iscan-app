@@ -4,17 +4,17 @@
 
     <application
         android:allowBackup="true"
-        android:name=".KtApplication"
+        android:name=".ui.activities.KtApplication"
         android:icon="@mipmap/ic_launcher"
         android:hardwareAccelerated="true"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
-        <activity android:name=".HomeActivity"></activity>
-        <activity android:name=".DetailProdukActivity"></activity>
-        <activity android:name=".ScannerTokoActivity"></activity>
-        <activity android:name=".ScannerProdukActivity"></activity>
+        <activity android:name=".ui.activities.HomeActivity"/>
+        <activity android:name=".ui.activities.DetailProdukActivity"/>
+        <activity android:name=".ui.activities.ScannerTokoActivity"/>
+        <activity android:name=".ui.activities.ScannerProdukActivity"/>
         <activity android:name=".SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,6 +23,6 @@
             </intent-filter>
         </activity>
     </application>
-
     <uses-permission android:name="android.permission.VIBRATE" />
+
 </manifest>

@@ -1,4 +1,4 @@
-package com.etwicaksono.iscan
+package com.etwicaksono.iscan.ui.activities
 
 import android.animation.ArgbEvaluator
 import android.animation.ValueAnimator
@@ -7,7 +7,7 @@ import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.core.content.ContextCompat
+import com.etwicaksono.iscan.R
 import com.etwicaksono.iscan.databinding.ActivityScannerTokoBinding
 import com.google.zxing.ResultPoint
 import com.google.zxing.client.android.BeepManager
