@@ -6,6 +6,7 @@ import android.content.Intent
 import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.etwicaksono.iscan.R
@@ -65,7 +66,6 @@ class ScannerTokoActivity : AppCompatActivity(), ITokoView {
 //                        cek database
                         presenter = TokoPresenter(this@ScannerTokoActivity, "single", it?.text)
                         presenter.getData()
-                        Toast.makeText(this@ScannerTokoActivity, "Tester", Toast.LENGTH_SHORT).show()
 
                     }
                 }
@@ -158,6 +158,7 @@ class ScannerTokoActivity : AppCompatActivity(), ITokoView {
     }
 
     override fun onFailedGet(msg: String) {
-        Toast.makeText(this, "Data gagal diakses", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Error :" + msg, Toast.LENGTH_LONG).show()
+        Log.d("Error", "Error data toko :" + msg)
     }
 }

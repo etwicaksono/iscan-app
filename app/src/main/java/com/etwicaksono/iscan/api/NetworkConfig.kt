@@ -41,6 +41,6 @@ interface TokoService {
     @GET("toko")
     fun getDataToko(
     @Query("type")type:String?,
-    @Query("type")barcode:String?,
+    @Query("barcode")barcode:String?,
     ): Call<WrappedResponse<TokoModel>>
 }
