@@ -37,14 +37,34 @@
         android:gravity="top"
         android:orientation="vertical">
 
-        <com.journeyapps.barcodescanner.DecoratedBarcodeView
-            android:id="@+id/barcode_scanner"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginRight="12dp"
-            app:zxing_scanner_layout="@layout/custom_barcode_layout" />
+            android:layout_height="wrap_content">
+
+            <com.journeyapps.barcodescanner.DecoratedBarcodeView
+                android:id="@+id/barcode_scanner"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:zxing_scanner_layout="@layout/custom_barcode_layout" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_torch"
+                android:layout_width="wrap_content"
+                android:layout_height="51dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/ic_baseline_flash_off_24"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/barcode_scanner"
+                app:backgroundTint="@color/white"
+                tools:viewBindingIgnore="true" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:layout_width="match_parent"

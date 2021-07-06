@@ -1,4 +1,4 @@
-package com.etwicaksono.iscan
+package com.etwicaksono.iscan.ui.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import com.etwicaksono.iscan.databinding.ActivitySplashScreenBinding
-import com.etwicaksono.iscan.ui.activities.HomeActivity
 
 class SplashScreenActivity : AppCompatActivity() {
 

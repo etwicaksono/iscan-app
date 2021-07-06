@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import com.etwicaksono.iscan.R
 import com.etwicaksono.iscan.databinding.ActivityScannerTokoBinding
 import com.google.zxing.ResultPoint
@@ -26,6 +27,8 @@ class ScannerTokoActivity : AppCompatActivity() {
     private lateinit var scanContinuousBG: Drawable
     lateinit var beepManager: BeepManager
     private var lastScan = Date()
+    private var torchState: Boolean = false
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,8 +56,13 @@ class ScannerTokoActivity : AppCompatActivity() {
                         tvBarcodeValue.text = it.text
                         lastScan = current
                         beepManager.playBeepSoundAndVibrate()
-
                         animateBackground()
+//                        cek database
+                        Toast.makeText(this@ScannerTokoActivity, "Get Barcode", Toast.LENGTH_SHORT)
+                            .show()
+                        val intentScanProduk =
+                            Intent(this@ScannerTokoActivity, ScannerProdukActivity::class.java)
+                        startActivity(intentScanProduk)
                     }
                 }
             }
@@ -63,22 +71,30 @@ class ScannerTokoActivity : AppCompatActivity() {
             }
         }
 
-        fun startScan() {
-            if (!scanContinuousState) {
-                scanContinuousState = !scanContinuousState
-                tvBarcodeValue.text = "Scanning...."
-                barcodeView.decodeContinuous(callback)
-            } else {
-                scanContinuousState = !scanContinuousState
-                barcodeView.barcodeView.stopDecoding()
-            }
+//        btnScanContinuous.setOnClickListener(View.OnClickListener {
+//            tvBarcodeValue.text = "Scanning...."
+//        })
+
+        if (!scanContinuousState) {
+            scanContinuousState = !scanContinuousState
+            tvBarcodeValue.text = "Scanning...."
+            barcodeView.decodeContinuous(callback)
+        } else {
+            scanContinuousState = !scanContinuousState
+            barcodeView.barcodeView.stopDecoding()
         }
 
-        btnScanContinuous.setOnClickListener(View.OnClickListener {
-            tvBarcodeValue.text = "Scanning...."
-        })
-
-        startScan()
+        binding.btnTorch.setOnClickListener {
+            if (torchState) {
+                torchState = false
+                barcodeView.setTorchOff()
+                it.setBackgroundDrawable(getDrawable(R.drawable.ic_baseline_flash_off_24))
+            } else {
+                torchState = true
+                barcodeView.setTorchOn()
+                it.setBackgroundDrawable(getDrawable(R.drawable.ic_baseline_flash_on_24))
+            }
+        }
 
     }
 
@@ -119,6 +135,8 @@ class ScannerTokoActivity : AppCompatActivity() {
         if (result != null) {
             if (result.contents != null) {
                 binding.tvBarcodeValue.text = result.contents
+//                ambil data dari API
+                Toast.makeText(this, "Got barcode", Toast.LENGTH_SHORT).show()
             } else {
                 binding.tvBarcodeValue.text = "....................."
             }
