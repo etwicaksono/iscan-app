@@ -10,6 +10,9 @@ import android.view.View
 import android.widget.Toast
 import com.etwicaksono.iscan.R
 import com.etwicaksono.iscan.databinding.ActivityScannerTokoBinding
+import com.etwicaksono.iscan.model.TokoModel
+import com.etwicaksono.iscan.presenter.TokoPresenter
+import com.etwicaksono.iscan.views.ITokoView
 import com.google.zxing.ResultPoint
 import com.google.zxing.client.android.BeepManager
 import com.google.zxing.integration.android.IntentIntegrator
@@ -19,7 +22,7 @@ import com.journeyapps.barcodescanner.BarcodeResult
 import com.journeyapps.barcodescanner.CaptureManager
 import java.util.*
 
-class ScannerTokoActivity : AppCompatActivity() {
+class ScannerTokoActivity : AppCompatActivity(), ITokoView {
 
     private lateinit var binding: ActivityScannerTokoBinding
     private lateinit var captureManager: CaptureManager
@@ -28,6 +31,7 @@ class ScannerTokoActivity : AppCompatActivity() {
     lateinit var beepManager: BeepManager
     private var lastScan = Date()
     private var torchState: Boolean = false
+    private lateinit var presenter: TokoPresenter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,12 +61,12 @@ class ScannerTokoActivity : AppCompatActivity() {
                         lastScan = current
                         beepManager.playBeepSoundAndVibrate()
                         animateBackground()
+
 //                        cek database
-                        Toast.makeText(this@ScannerTokoActivity, "Get Barcode", Toast.LENGTH_SHORT)
-                            .show()
-                        val intentScanProduk =
-                            Intent(this@ScannerTokoActivity, ScannerProdukActivity::class.java)
-                        startActivity(intentScanProduk)
+                        presenter = TokoPresenter(this@ScannerTokoActivity, "single", it?.text)
+                        presenter.getData()
+                        Toast.makeText(this@ScannerTokoActivity, "Tester", Toast.LENGTH_SHORT).show()
+
                     }
                 }
             }
@@ -144,5 +148,16 @@ class ScannerTokoActivity : AppCompatActivity() {
             super.onActivityResult(requestCode, resultCode, data)
         }
 
+    }
+
+    override fun onSuccessGet(data: TokoModel?) {
+        val intentScanProduk =
+            Intent(this@ScannerTokoActivity, ScannerProdukActivity::class.java)
+        intentScanProduk.putExtra(ScannerProdukActivity.NAMA_TOKO, data?.nama)
+        startActivity(intentScanProduk)
+    }
+
+    override fun onFailedGet(msg: String) {
+        Toast.makeText(this, "Data gagal diakses", Toast.LENGTH_SHORT).show()
     }
 }
