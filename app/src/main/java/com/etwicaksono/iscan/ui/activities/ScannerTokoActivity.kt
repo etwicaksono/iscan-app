@@ -154,6 +154,9 @@ class ScannerTokoActivity : AppCompatActivity(), ITokoView {
         val intentScanProduk =
             Intent(this@ScannerTokoActivity, ScannerProdukActivity::class.java)
         intentScanProduk.putExtra(ScannerProdukActivity.NAMA_TOKO, data?.nama)
+
+        if (data?.nama!=null)Toast.makeText(this, "Selamat datang di toko "+data?.nama, Toast.LENGTH_LONG).show()
+
         startActivity(intentScanProduk)
     }
 
