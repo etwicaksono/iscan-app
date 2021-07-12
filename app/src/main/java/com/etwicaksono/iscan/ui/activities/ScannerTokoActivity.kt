@@ -39,6 +39,7 @@ class ScannerTokoActivity : AppCompatActivity(), ITokoView, ILoadingView {
     private lateinit var presenter: TokoPresenter
     private var progressDialog: ProgressDialog? = null
     lateinit var preferences: Preferences
+    private var hasResult: Boolean = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,7 +47,7 @@ class ScannerTokoActivity : AppCompatActivity(), ITokoView, ILoadingView {
         binding = ActivityScannerTokoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        preferences=Preferences(this)
+        preferences = Preferences(this)
 
         val barcodeView = binding.barcodeScanner
         val btnScanContinuous = binding.btnReset
@@ -178,7 +179,11 @@ class ScannerTokoActivity : AppCompatActivity(), ITokoView, ILoadingView {
                 ).show()
             }
         }
-        startActivity(intentScanProduk)
+
+        if (!hasResult) {
+            hasResult = true
+            startActivity(intentScanProduk)
+        }
     }
 
     override fun onFailedGet(msg: String) {
