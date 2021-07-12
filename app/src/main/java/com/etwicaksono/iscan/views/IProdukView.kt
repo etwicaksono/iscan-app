@@ -2,10 +2,11 @@ package com.etwicaksono.iscan.views
 
 import android.content.Context
 import android.widget.Toast
+import com.etwicaksono.iscan.model.ProdukModel
 import com.etwicaksono.iscan.model.TokoModel
 
-interface ITokoView {
+interface IProdukView {
 //    untuk get data
-    fun onSuccessGet(data:TokoModel?)
+    fun onSuccessGet(data:ProdukModel?)
     fun onFailedGet(msg:String)
 }

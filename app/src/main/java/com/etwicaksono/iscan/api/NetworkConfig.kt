@@ -1,5 +1,6 @@
 package com.etwicaksono.iscan.api
 
+import com.etwicaksono.iscan.model.ProdukModel
 import com.etwicaksono.iscan.model.TokoModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -32,7 +33,8 @@ object NetworkConfig {
             .build()
     }
 
-    fun getService()= getRetrofit().create(TokoService::class.java)
+    fun getTokoService()= getRetrofit().create(TokoService::class.java)
+    fun getProdukService()= getRetrofit().create(ProdukService::class.java)
 }
 
 interface TokoService {
@@ -43,4 +45,13 @@ interface TokoService {
     @Query("type")type:String?,
     @Query("barcode")barcode:String?,
     ): Call<WrappedResponse<TokoModel>>
+}
+
+interface ProdukService{
+//    fungsi get data
+    @GET("produk")
+    fun getDataProduk(
+    @Query("type")type: String?,
+    @Query("barcode")barcode: String?
+    ):Call<WrappedResponse<ProdukModel>>
 }

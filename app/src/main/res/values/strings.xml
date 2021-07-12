@@ -11,4 +11,6 @@
     <string name="rescan">Rescan</string>
     <string name="exit">Exit</string>
     <string name="lorem">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur harum, quidem delectus asperiores quasi inventore. Vero cupiditate, quas eaque suscipit alias delectus quasi quaerat fugit maxime reiciendis! Eum, ad velit.</string>
+    <string name="please_wait">Tunggu sebentar....</string>
+    <string name="scanning">Scanning....</string>
 </resources>
