@@ -7,6 +7,7 @@ import android.content.Intent
 import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.etwicaksono.iscan.R
 import com.etwicaksono.iscan.databinding.ActivityScannerProdukBinding
@@ -37,6 +38,7 @@ class ScannerProdukActivity : AppCompatActivity(), IProdukView, ILoadingView {
     private var torchState: Boolean = false
     private lateinit var presenter: ProdukPresenter
     private var progressDialog: ProgressDialog? = null
+    private var hasResult: Boolean = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -77,6 +79,7 @@ class ScannerProdukActivity : AppCompatActivity(), IProdukView, ILoadingView {
                         presenter = ProdukPresenter(
                             this@ScannerProdukActivity,
                             "single",
+                            preferences?.getValues("id_toko"),
                             it.text,
                             this@ScannerProdukActivity
                         )
@@ -86,7 +89,6 @@ class ScannerProdukActivity : AppCompatActivity(), IProdukView, ILoadingView {
             }
 
             override fun possibleResultPoints(resultPoints: MutableList<ResultPoint>?) {
-                TODO("Not yet implemented")
             }
         }
 
@@ -143,18 +145,37 @@ class ScannerProdukActivity : AppCompatActivity(), IProdukView, ILoadingView {
     }
 
     override fun onSuccessGet(data: ProdukModel?) {
-        TODO("Not yet implemented")
+        val intentDetailProduk =
+            Intent(this@ScannerProdukActivity, DetailProdukActivity::class.java)
+
+        if (data != null) {
+            intentDetailProduk.putExtra(DetailProdukActivity.NAMA_PRODUK,data.nama)
+            intentDetailProduk.putExtra(DetailProdukActivity.HARGA_PRODUK,data.harga)
+            intentDetailProduk.putExtra(DetailProdukActivity.BARCODE_PRODUK,data.kode)
+            intentDetailProduk.putExtra(DetailProdukActivity.DESKRIPSI_PRODUK,data.deskripsi)
+            intentDetailProduk.putExtra(DetailProdukActivity.FOTO_PRODUK,data.foto)
+        }
+
+        if (!hasResult) {
+            hasResult = true
+            startActivity(intentDetailProduk)
+        }
     }
 
     override fun onFailedGet(msg: String) {
-        TODO("Not yet implemented")
+        Toast.makeText(this, "Error : $msg", Toast.LENGTH_LONG).show()
+        Log.d("Error", "Error data produk :$msg")
     }
 
     override fun isLoading() {
-        TODO("Not yet implemented")
+        progressDialog?.let {
+            it.setMessage(getText(R.string.please_wait))
+            it.setCanceledOnTouchOutside(false)
+            it.show()
+        }
     }
 
     override fun hideLoading() {
-        TODO("Not yet implemented")
+        progressDialog?.dismiss()
     }
 }

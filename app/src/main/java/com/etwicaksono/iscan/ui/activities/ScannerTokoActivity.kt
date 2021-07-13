@@ -3,13 +3,11 @@ package com.etwicaksono.iscan.ui.activities
 import android.animation.ArgbEvaluator
 import android.animation.ValueAnimator
 import android.app.ProgressDialog
-import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Toast
 import com.etwicaksono.iscan.R
 import com.etwicaksono.iscan.databinding.ActivityScannerTokoBinding
@@ -20,8 +18,6 @@ import com.etwicaksono.iscan.views.ILoadingView
 import com.etwicaksono.iscan.views.ITokoView
 import com.google.zxing.ResultPoint
 import com.google.zxing.client.android.BeepManager
-import com.google.zxing.integration.android.IntentIntegrator
-import com.google.zxing.integration.android.IntentResult
 import com.journeyapps.barcodescanner.BarcodeCallback
 import com.journeyapps.barcodescanner.BarcodeResult
 import com.journeyapps.barcodescanner.CaptureManager
@@ -91,9 +87,6 @@ class ScannerTokoActivity : AppCompatActivity(), ITokoView, ILoadingView {
             }
         }
 
-//        btnScanContinuous.setOnClickListener(View.OnClickListener {
-//            tvBarcodeValue.text = "Scanning...."
-//        })
 
         if (!scanContinuousState) {
             scanContinuousState = !scanContinuousState
@@ -147,23 +140,6 @@ class ScannerTokoActivity : AppCompatActivity(), ITokoView, ILoadingView {
         colorAnimation.start()
     }
 
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//
-//        var result: IntentResult? =
-//            IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
-//
-//        if (result != null) {
-//            if (result.contents != null) {
-//                binding.tvBarcodeValue.text = result.contents
-//                Toast.makeText(this, "Got barcode", Toast.LENGTH_SHORT).show()
-//            } else {
-//                binding.tvBarcodeValue.text = "....................."
-//            }
-//        } else {
-//            super.onActivityResult(requestCode, resultCode, data)
-//        }
-//
-//    }
 
     override fun onSuccessGet(data: TokoModel?) {
         val intentScanProduk = Intent(this@ScannerTokoActivity, ScannerProdukActivity::class.java)

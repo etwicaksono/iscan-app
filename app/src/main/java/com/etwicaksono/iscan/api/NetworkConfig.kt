@@ -52,6 +52,7 @@ interface ProdukService{
     @GET("produk")
     fun getDataProduk(
     @Query("type")type: String?,
-    @Query("barcode")barcode: String?
+    @Query("id_toko")id_toko: String?,
+    @Query("barcode")barcode: String?,
     ):Call<WrappedResponse<ProdukModel>>
 }

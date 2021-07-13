@@ -11,21 +11,27 @@ import com.etwicaksono.iscan.views.ITokoView
 import retrofit2.Call
 import retrofit2.Response
 
-class ProdukPresenter (val iProdukView: IProdukView, val type:String, val barcode:String?, private val loading:ILoadingView){
+class ProdukPresenter(
+    val iProdukView: IProdukView,
+    val type: String,
+    val id_toko: String?,
+    private val barcode: String?,
+    private val loading: ILoadingView
+) {
 
-//    fungsi get data
-    fun getData(){
-    loading.isLoading()
-        NetworkConfig.getProdukService().getDataProduk(type,barcode)
-            .enqueue(object :retrofit2.Callback<WrappedResponse<ProdukModel>>{
+    //    fungsi get data
+    fun getData() {
+        loading.isLoading()
+        NetworkConfig.getProdukService().getDataProduk(type, id_toko, barcode)
+            .enqueue(object : retrofit2.Callback<WrappedResponse<ProdukModel>> {
                 override fun onResponse(
                     call: Call<WrappedResponse<ProdukModel>>,
                     response: Response<WrappedResponse<ProdukModel>>
                 ) {
-                    if (response.isSuccessful){
+                    if (response.isSuccessful) {
                         val status = response.body()?.status
-                        if(status==200){
-                            val data=response.body()?.data
+                        if (status == 200) {
+                            val data = response.body()?.data
                             iProdukView.onSuccessGet(data)
                         }
                         loading.hideLoading()
@@ -34,7 +40,7 @@ class ProdukPresenter (val iProdukView: IProdukView, val type:String, val barcod
 
                 override fun onFailure(call: Call<WrappedResponse<ProdukModel>>, t: Throwable) {
                     iProdukView.onFailedGet(t.localizedMessage)
-                    Log.d("Error","Error data toko")
+                    Log.d("Error", "Error data toko")
                     loading.hideLoading()
                 }
 

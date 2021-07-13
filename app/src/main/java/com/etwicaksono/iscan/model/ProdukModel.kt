@@ -16,6 +16,9 @@ class ProdukModel : Serializable {
     @field:SerializedName("nama")
     val nama: String? = null
 
+    @field:SerializedName("harga")
+    val harga: String? = null
+
     @field:SerializedName("deskripsi")
     val deskripsi: String? = null
 

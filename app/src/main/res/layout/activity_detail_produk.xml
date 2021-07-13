@@ -108,7 +108,7 @@
                     android:layout_marginRight="12dp"
                     android:layout_marginBottom="12dp"
                     android:drawableLeft="@drawable/barcode_black_1"
-                    android:textAlignment="center"
+                    android:textAlignment="textStart"
                     android:textColor="@color/black"
                     android:textSize="24sp"
                     tools:text="12345 54636 215468" />
