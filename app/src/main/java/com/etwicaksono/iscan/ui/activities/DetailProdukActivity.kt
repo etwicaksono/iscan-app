@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.etwicaksono.iscan.databinding.ActivityDetailProdukBinding
+import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.*
 
@@ -23,22 +24,34 @@ class DetailProdukActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailProdukBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val harga = intent.getStringExtra(HARGA_PRODUK)
+
+        var harga = intent.getStringExtra(HARGA_PRODUK)
+        harga = harga?.let { generate(it) }
         binding.tvHargaProduk.text = harga
         binding.tvBarcodeValue.text = intent.getStringExtra(BARCODE_PRODUK)
         binding.tvNamaProduk.text = intent.getStringExtra(NAMA_PRODUK)
         binding.tvDetailProduk.text = intent.getStringExtra(DESKRIPSI_PRODUK)
 
-        binding.btnConfirm.setOnClickListener{
-            val intent = Intent(this@DetailProdukActivity,ScannerProdukActivity::class.java)
+        binding.btnConfirm.setOnClickListener {
+//            val intent = Intent(this@DetailProdukActivity , ScannerProdukActivity::class.java)
+//            startActivity(intent)
+            finish()
+        }
+
+        binding.btnReset.setOnClickListener {
+            val intent = Intent(this@DetailProdukActivity , HomeActivity::class.java)
             startActivity(intent)
         }
 
-        binding.btnReset.setOnClickListener{
-            val intent=Intent(this@DetailProdukActivity,HomeActivity::class.java)
-            startActivity(intent)
-        }
+    }
 
+    fun generate(nominal: String): String {
+        val local = Locale("id" , "ID")
+        val cursIndo = NumberFormat.getCurrencyInstance(local) as DecimalFormat
+        val symbol = Currency.getInstance(local).getSymbol(local)
+        cursIndo.positivePrefix = "$symbol. "
+
+        return cursIndo.format(nominal.toDouble())
     }
 
 }
