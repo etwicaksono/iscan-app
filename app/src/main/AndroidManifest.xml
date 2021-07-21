@@ -7,7 +7,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
-        android:name=".KtApplication"
         android:icon="@mipmap/ic_launcher"
         android:hardwareAccelerated="true"
         android:label="@string/app_name"
@@ -16,11 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
         tools:targetApi="m">
-        <activity android:name=".ui.activities.HomeActivity"/>
-        <activity android:name=".ui.activities.DetailProdukActivity"/>
-        <activity android:name=".ui.activities.ScannerTokoActivity"/>
-        <activity android:name=".ui.activities.ScannerProdukActivity"/>
-        <activity android:name=".ui.activities.SplashScreenActivity">
+        <activity android:name=".ui.activities.home.HomeActivity"/>
+        <activity android:name=".ui.activities.detail.DetailProdukActivity"/>
+        <activity android:name=".ui.activities.scannerToko.ScannerTokoActivity"/>
+        <activity android:name=".ui.activities.scannerProduk.ScannerProdukActivity"/>
+        <activity android:name=".ui.activities.splashscreen.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

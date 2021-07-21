@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.activities.DetailProdukActivity">
+    tools:context=".ui.activities.detail.DetailProdukActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -64,18 +64,18 @@
                     android:layout_marginRight="12dp"
                     android:gravity="center_horizontal">
 
-                    <com.rd.PageIndicatorView
-                        android:id="@+id/indicator"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="16dp"
-                        app:piv_animationType="scale"
-                        app:piv_dynamicCount="true"
-                        app:piv_selectedColor="@color/dark_blue"
-                        app:piv_unselectedColor="@color/gray1"
-                        tools:piv_padding="12dp"
-                        tools:piv_radius="8dp" />
+<!--                    <com.rd.PageIndicatorView-->
+<!--                        android:id="@+id/indicator"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_centerVertical="true"-->
+<!--                        android:layout_marginLeft="16dp"-->
+<!--                        app:piv_animationType="scale"-->
+<!--                        app:piv_dynamicCount="true"-->
+<!--                        app:piv_selectedColor="@color/dark_blue"-->
+<!--                        app:piv_unselectedColor="@color/gray1"-->
+<!--                        tools:piv_padding="12dp"-->
+<!--                        tools:piv_radius="8dp" />-->
                 </RelativeLayout>
 
                 <TextView

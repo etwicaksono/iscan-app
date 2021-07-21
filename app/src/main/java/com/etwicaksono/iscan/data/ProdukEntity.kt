@@ -1,11 +1,14 @@
-package com.etwicaksono.iscan.model
+package com.etwicaksono.iscan.data
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-class TokoModel : Serializable {
+class ProdukEntity : Serializable {
     @field:SerializedName("id")
     val id: String? = null
+
+    @field:SerializedName("id_toko")
+    val id_toko: String? = null
 
     @field:SerializedName("kode")
     val kode: String? = null
@@ -13,8 +16,11 @@ class TokoModel : Serializable {
     @field:SerializedName("nama")
     val nama: String? = null
 
-    @field:SerializedName("alamat")
-    val alamat: String? = null
+    @field:SerializedName("harga")
+    val harga: String? = null
+
+    @field:SerializedName("deskripsi")
+    val deskripsi: String? = null
 
     @field:SerializedName("foto")
     val foto: String? = null

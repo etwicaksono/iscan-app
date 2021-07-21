@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_toast"
+    android:orientation="vertical"
+    android:paddingTop="14dp"
+    android:paddingBottom="20dp">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/ic_check"
+        android:id="@+id/ic_toast"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_toast"
+        android:layout_gravity="center_vertical"
+        android:layout_marginHorizontal="16dp"
+        android:maxLines="3"
+        android:text="@string/simple_message"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        android:textColor="@color/white"
+        android:textSize="14sp"/>
+
+</LinearLayout>

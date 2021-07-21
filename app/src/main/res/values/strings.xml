@@ -13,4 +13,6 @@
     <string name="lorem">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur harum, quidem delectus asperiores quasi inventore. Vero cupiditate, quas eaque suscipit alias delectus quasi quaerat fugit maxime reiciendis! Eum, ad velit.</string>
     <string name="please_wait">Tunggu sebentar....</string>
     <string name="scanning">Scanning....</string>
+    <string name="simple_message">Message</string>
+    <string name="no_recent_store">Belum ada toko yang dikunjungi</string>
 </resources>

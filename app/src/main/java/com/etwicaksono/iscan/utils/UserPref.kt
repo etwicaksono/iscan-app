@@ -3,7 +3,7 @@ package com.etwicaksono.iscan.utils
 import android.content.Context
 import android.content.SharedPreferences
 
-class Preferences(val context: Context) {
+class UserPref(val context: Context) {
 
     companion object{
         const val USER_PREF="USER_PREF"
@@ -20,4 +20,9 @@ class Preferences(val context: Context) {
     fun getValues(key: String):String?{
         return sharedPreferences.getString(key,"")
     }
+
+/*
+* LIST sharedPreferences
+* 1. recent_store
+* */
 }

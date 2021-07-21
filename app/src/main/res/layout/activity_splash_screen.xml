@@ -5,7 +5,7 @@
     style="@style/Theme.Iscan"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activities.SplashScreenActivity">
+    tools:context=".ui.activities.splashscreen.SplashScreenActivity">
 
     <ImageView
         android:id="@+id/img_splash_screen"
