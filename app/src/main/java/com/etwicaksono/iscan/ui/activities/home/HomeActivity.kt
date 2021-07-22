@@ -11,8 +11,10 @@ import com.etwicaksono.iscan.R
 import com.etwicaksono.iscan.data.TokoEntity
 import com.etwicaksono.iscan.databinding.ActivityHomeBinding
 import com.etwicaksono.iscan.ui.activities.BaseActivity
+import com.etwicaksono.iscan.ui.activities.scannerProduk.ScannerProdukActivity
 import com.etwicaksono.iscan.ui.activities.scannerToko.ScannerTokoActivity
 import com.etwicaksono.iscan.utils.UserPref
+import org.json.JSONObject
 
 class HomeActivity : BaseActivity() , View.OnClickListener {
     private lateinit var binding: ActivityHomeBinding
@@ -41,7 +43,7 @@ class HomeActivity : BaseActivity() , View.OnClickListener {
     private fun handlerUIState(it: HomeState?) {
         when (it) {
             is HomeState.IsLoading -> showLoading(binding.root,it.state)
-            is HomeState.Error -> showToast(it.err)
+            is HomeState.Error -> showToast(it.err,false)
         }
     }
 
@@ -69,8 +71,8 @@ class HomeActivity : BaseActivity() , View.OnClickListener {
     }
 
     private fun showSelectedData(toko: TokoEntity) {
-        startActivity(Intent(this , ScannerTokoActivity::class.java).apply {
-            putExtra(ScannerTokoActivity.EXTRAS_DATA , toko)
+        startActivity(Intent(this , ScannerProdukActivity::class.java).apply {
+            putExtra(ScannerProdukActivity.EXTRAS_DATA , toko)
         })
     }
 

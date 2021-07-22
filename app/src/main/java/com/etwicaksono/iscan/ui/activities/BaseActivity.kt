@@ -22,14 +22,12 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
 
-    protected fun showToast(message: String? , state: Boolean? = true) {
-        state?.let { isSuccess ->
-            if (isSuccess) {
-                CustomView.customToast(this , message , true , isSuccess = true)
-            } else {
-                CustomView.customToast(this , message , true , isSuccess = false)
-            }
-
-        }
+    protected fun showToast(
+        message: String? ,
+        isSuccess: Boolean? = true ,
+        isShort: Boolean? = true
+    ) {
+        CustomView.customToast(this , message , isSuccess=isSuccess ,isShort =  isShort)
     }
+
 }

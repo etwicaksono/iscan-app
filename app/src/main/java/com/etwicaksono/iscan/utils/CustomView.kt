@@ -28,6 +28,8 @@ object CustomView {
             }
         }
 
+        textMessage.text=message
+
         isShort?.let {
             val toast = Toast(context).apply {
                 setGravity(Gravity.CENTER , 0 , 0)
