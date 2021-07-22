@@ -54,7 +54,7 @@
                 android:layout_marginTop="19dp"
                 android:layout_marginRight="12dp"
                 android:layout_marginBottom="12dp"
-                android:text="@string/daftar_toko" />
+                android:text="@string/histori_toko" />
 
             <RelativeLayout
                 android:id="@+id/rl_list"
@@ -67,7 +67,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="12dp"
                     android:layout_marginRight="12dp"
-                    tools:listitem="@layout/item_row_toko" />
+                    tools:listitem="@layout/item_row_toko"/>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_scan_toko"

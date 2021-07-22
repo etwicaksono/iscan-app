@@ -8,12 +8,12 @@ import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.DecodeCallback
 import com.budiyev.android.codescanner.ErrorCallback
 import com.budiyev.android.codescanner.ScanMode
+import com.etwicaksono.iscan.R
 import com.etwicaksono.iscan.data.TokoEntity
 import com.etwicaksono.iscan.databinding.ActivityScannerTokoBinding
 import com.etwicaksono.iscan.ui.activities.BaseActivity
 import com.etwicaksono.iscan.ui.activities.scannerProduk.ScannerProdukActivity
 import com.google.zxing.BarcodeFormat
-import java.lang.Error
 
 class ScannerTokoActivity : BaseActivity() {
 
@@ -26,10 +26,11 @@ class ScannerTokoActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityScannerTokoBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.tvBarcodeValue.text="xxxx xxxx xxxx"
+        binding.tvBarcodeValue.text = getString(R.string.empty_barcode_value)
 
         init()
         scanner()
+        codeScanner.startPreview()
     }
 
     private fun init() {
@@ -43,11 +44,11 @@ class ScannerTokoActivity : BaseActivity() {
 
     }
 
-    private fun handlerUIState(it: ScannerState?) {
+    private fun handlerUIState(it: ScannerTokoState?) {
         when (it) {
-            is ScannerState.IsLoading -> showLoading(binding.root , it.state)
-            is ScannerState.IsSuccess -> isSuccess(it.status , it.msg , it.data)
-            is ScannerState.Error -> showToast(it.err , false , isShort = false)
+            is ScannerTokoState.IsLoading -> showLoading(binding.root , it.state)
+            is ScannerTokoState.IsSuccess -> isSuccess(it.status , it.msg , it.data)
+            is ScannerTokoState.Error -> showToast(it.err , false , isShort = false)
         }
     }
 
@@ -57,9 +58,9 @@ class ScannerTokoActivity : BaseActivity() {
                 showToast(msg , false)
                 codeScanner.startPreview()
             }
-            200->{
-                startActivity(Intent(this,ScannerProdukActivity::class.java).apply {
-                    putExtra(ScannerProdukActivity.EXTRAS_DATA,data)
+            200 -> {
+                startActivity(Intent(this , ScannerProdukActivity::class.java).apply {
+                    putExtra(ScannerProdukActivity.EXTRAS_DATA , data)
                 })
             }
         }
@@ -79,7 +80,7 @@ class ScannerTokoActivity : BaseActivity() {
 //        callbacks
         codeScanner.decodeCallback = DecodeCallback {
             runOnUiThread {
-                binding.tvBarcodeValue.text=it.text
+                binding.tvBarcodeValue.text = it.text
                 viewModel.scanToko(it.text)
             }
         }
@@ -103,6 +104,10 @@ class ScannerTokoActivity : BaseActivity() {
     override fun onPause() {
         codeScanner.releaseResources()
         super.onPause()
+    }
+
+    override fun onBackPressed() {
+        finish()
     }
 
 }

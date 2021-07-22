@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">iScan</string>
-    <string name="daftar_toko">Daftar Toko</string>
+    <string name="histori_toko">Histori Toko</string>
     <string name="scan">Scan</string>
     <string name="barcode_text">Barcode</string>
     <string name="reset">Reset</string>
@@ -15,4 +15,5 @@
     <string name="scanning">Scanning....</string>
     <string name="simple_message">Message</string>
     <string name="no_recent_store">Belum ada toko yang dikunjungi</string>
+    <string name="empty_barcode_value">xxxx xxxx xxxx</string>
 </resources>

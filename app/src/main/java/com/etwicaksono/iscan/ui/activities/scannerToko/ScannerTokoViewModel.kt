@@ -8,41 +8,41 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 
-class ScannerTokoViewModel:ViewModel() {
-    private var state: SingleLiveEvent<ScannerState> = SingleLiveEvent()
+class ScannerTokoViewModel : ViewModel() {
+    private var tokoState: SingleLiveEvent<ScannerTokoState> = SingleLiveEvent()
     private var api = ApiConfig.instance()
 
     fun scanToko(barcode: String?) {
-        state.value = ScannerState.IsLoading(true)
+        tokoState.value = ScannerTokoState.IsLoading(true)
         CompositeDisposable().add(
             api.getTokoByBarcode(barcode)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     when (it.status) {
-                        200 -> state.value =
-                            ScannerState.IsSuccess(it.status , it.message , it.data)
-                        404 -> state.value =
-                            ScannerState.IsSuccess(it.status , it.message , it.data)
-                        else -> state.value = ScannerState.Error(it.message)
+                        200 -> tokoState.value =
+                            ScannerTokoState.IsSuccess(it.status , it.message , it.data)
+                        404 -> tokoState.value =
+                            ScannerTokoState.IsSuccess(it.status , it.message , it.data)
+                        else -> tokoState.value = ScannerTokoState.Error(it.message)
                     }
-                    state.value = ScannerState.IsLoading()
+                    tokoState.value = ScannerTokoState.IsLoading()
                 } , {
-                    state.value = ScannerState.Error(it.message)
-                    state.value = ScannerState.IsLoading()
+                    tokoState.value = ScannerTokoState.Error(it.message)
+                    tokoState.value = ScannerTokoState.IsLoading()
                 })
         )
     }
 
-    fun getState() = state
+    fun getState() = tokoState
 
 }
 
-sealed class ScannerState() {
-    data class IsLoading(var state: Boolean = false) : ScannerState()
+sealed class ScannerTokoState() {
+    data class IsLoading(var state: Boolean = false) : ScannerTokoState()
     data class IsSuccess(var status: Int? , var msg: String? , var data: TokoEntity?) :
-        ScannerState()
+        ScannerTokoState()
 
-    data class Error(var err: String?) : ScannerState()
+    data class Error(var err: String?) : ScannerTokoState()
 
 }

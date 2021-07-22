@@ -1,9 +1,12 @@
 package com.etwicaksono.iscan.ui.activities.home
 
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.core.app.ActivityCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,7 +17,6 @@ import com.etwicaksono.iscan.ui.activities.BaseActivity
 import com.etwicaksono.iscan.ui.activities.scannerProduk.ScannerProdukActivity
 import com.etwicaksono.iscan.ui.activities.scannerToko.ScannerTokoActivity
 import com.etwicaksono.iscan.utils.UserPref
-import org.json.JSONObject
 
 class HomeActivity : BaseActivity() , View.OnClickListener {
     private lateinit var binding: ActivityHomeBinding
@@ -27,6 +29,15 @@ class HomeActivity : BaseActivity() , View.OnClickListener {
         setContentView(binding.root)
 
         init()
+        checkPermissions()
+    }
+
+    private fun checkPermissions() {
+        if(Build.VERSION.SDK_INT >= 23){
+            if(checkSelfPermission(android.Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED){
+                ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.CAMERA),1)
+            }
+        }
     }
 
     private fun init() {
@@ -91,6 +102,10 @@ class HomeActivity : BaseActivity() , View.OnClickListener {
                 adapter.setToko(it)
             }
         })
+    }
+
+    override fun onBackPressed() {
+        finishAffinity()
     }
 
 }
