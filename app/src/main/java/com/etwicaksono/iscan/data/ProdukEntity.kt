@@ -26,6 +26,6 @@ data class ProdukEntity(
     val deskripsi: String? = null ,
 
     @field:SerializedName("foto")
-    val foto: List<String?>? = null ,
+    val foto: ArrayList<String?>? = null ,
 
     ):Parcelable

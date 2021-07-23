@@ -13,6 +13,7 @@ import com.viewpagerindicator.CirclePageIndicator
 import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 class DetailProdukActivity : BaseActivity() , View.OnClickListener {
 
@@ -20,7 +21,6 @@ class DetailProdukActivity : BaseActivity() , View.OnClickListener {
     private var dataProduk: ProdukEntity? = null
     private var viewPager: ViewPager? = null
     private var indicator: CirclePageIndicator? = null
-    private var numPages = 0
     private var currentPage = 0
 
     companion object {
@@ -51,14 +51,13 @@ class DetailProdukActivity : BaseActivity() , View.OnClickListener {
         createImageSlider(dataProduk!!.foto)
     }
 
-    private fun createImageSlider(foto: List<String?>?) {
+    private fun createImageSlider(foto: ArrayList<String?>?) {
         viewPager?.adapter = SliderAdapter(this , foto)
         indicator?.setViewPager(viewPager)
         val density = resources.displayMetrics.density
 
 //        set circle indicator radius
         indicator?.radius = 5 * density
-        numPages = foto?.size ?: 0
 
 //        Pager listener over indicator
         indicator?.setOnPageChangeListener(object : ViewPager.OnPageChangeListener {
