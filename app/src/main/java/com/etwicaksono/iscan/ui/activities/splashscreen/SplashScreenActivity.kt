@@ -19,8 +19,8 @@ class SplashScreenActivity : BaseActivity() {
         binding = ActivitySplashScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val tester = JSONArray(arrayListOf<Int>(7,8,9,10,11,12,1,2,3,4,5,6)).toString()
-        UserPref(this).setValue("recent_store",tester)
+//        val tester = JSONArray(arrayListOf<Int>(7,8,9,10,11,12,1,2,3,4,5,6)).toString()
+//        UserPref(this).setValue("recent_store",tester)
 
        Handler(Looper.getMainLooper()).postDelayed({
            var homeIntent = Intent(this@SplashScreenActivity, HomeActivity::class.java)
