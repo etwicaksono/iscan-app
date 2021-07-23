@@ -13,7 +13,11 @@ import com.etwicaksono.iscan.data.TokoEntity
 import com.etwicaksono.iscan.databinding.ActivityScannerTokoBinding
 import com.etwicaksono.iscan.ui.activities.BaseActivity
 import com.etwicaksono.iscan.ui.activities.scannerProduk.ScannerProdukActivity
+import com.etwicaksono.iscan.utils.UserPref
+import com.google.gson.GsonBuilder
+import com.google.gson.reflect.TypeToken
 import com.google.zxing.BarcodeFormat
+import org.json.JSONArray
 
 class ScannerTokoActivity : BaseActivity() {
 
@@ -38,7 +42,7 @@ class ScannerTokoActivity : BaseActivity() {
             this ,
             ViewModelProvider.NewInstanceFactory()
         )[ScannerTokoViewModel::class.java]
-        viewModel.getState().observer(this , androidx.lifecycle.Observer {
+        viewModel.getState().observer(this , {
             handlerUIState(it)
         })
 
@@ -59,6 +63,24 @@ class ScannerTokoActivity : BaseActivity() {
                 codeScanner.startPreview()
             }
             200 -> {
+                UserPref(this).getValues("recent_store")?.let {
+                    val id = data?.id
+                    val gson = GsonBuilder().create()
+                    var recentToko = gson.fromJson<ArrayList<String>>(it ,
+                        object : TypeToken<ArrayList<String>>() {}.type)
+
+                    if (recentToko.isNullOrEmpty())recentToko= arrayListOf()
+
+                    val index = recentToko.indexOf(id)
+                    if (index >= 0) {
+                        recentToko.removeAt(index)
+                    }
+
+                    if (id != null) {
+                        recentToko.add(id)
+                    }
+                    UserPref(this).setValue("recent_store" , JSONArray(recentToko).toString())
+                }
                 startActivity(Intent(this , ScannerProdukActivity::class.java).apply {
                     putExtra(ScannerProdukActivity.EXTRAS_DATA , data)
                 })
