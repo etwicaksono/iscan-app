@@ -82,6 +82,7 @@ class HomeActivity : BaseActivity() , View.OnClickListener {
     }
 
     private fun showSelectedData(toko: TokoEntity) {
+        UserPref(this).updateRecentToko(toko)
         startActivity(Intent(this , ScannerProdukActivity::class.java).apply {
             putExtra(ScannerProdukActivity.EXTRAS_DATA , toko)
         })
@@ -105,6 +106,7 @@ class HomeActivity : BaseActivity() , View.OnClickListener {
     }
 
     override fun onBackPressed() {
+        super.onBackPressed();
         finishAffinity()
     }
 

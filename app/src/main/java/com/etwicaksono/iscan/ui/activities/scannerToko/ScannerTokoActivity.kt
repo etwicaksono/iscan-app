@@ -63,24 +63,7 @@ class ScannerTokoActivity : BaseActivity() {
                 codeScanner.startPreview()
             }
             200 -> {
-                UserPref(this).getValues("recent_store")?.let {
-                    val id = data?.id
-                    val gson = GsonBuilder().create()
-                    var recentToko = gson.fromJson<ArrayList<String>>(it ,
-                        object : TypeToken<ArrayList<String>>() {}.type)
-
-                    if (recentToko.isNullOrEmpty())recentToko= arrayListOf()
-
-                    val index = recentToko.indexOf(id)
-                    if (index >= 0) {
-                        recentToko.removeAt(index)
-                    }
-
-                    if (id != null) {
-                        recentToko.add(id)
-                    }
-                    UserPref(this).setValue("recent_store" , JSONArray(recentToko).toString())
-                }
+                UserPref(this).updateRecentToko(data)
                 startActivity(Intent(this , ScannerProdukActivity::class.java).apply {
                     putExtra(ScannerProdukActivity.EXTRAS_DATA , data)
                 })
@@ -93,7 +76,7 @@ class ScannerTokoActivity : BaseActivity() {
 
 //        Parameters default
         codeScanner.camera = CodeScanner.CAMERA_BACK
-        codeScanner.formats = listOf(BarcodeFormat.CODE_128)
+        codeScanner.formats = CodeScanner.ALL_FORMATS
         codeScanner.autoFocusMode = AutoFocusMode.SAFE
         codeScanner.scanMode = ScanMode.SINGLE
         codeScanner.isAutoFocusEnabled = true
@@ -121,6 +104,7 @@ class ScannerTokoActivity : BaseActivity() {
     override fun onResume() {
         super.onResume()
         codeScanner.startPreview()
+        binding.tvBarcodeValue.text = getText(R.string.empty_barcode_value)
     }
 
     override fun onPause() {
@@ -129,6 +113,7 @@ class ScannerTokoActivity : BaseActivity() {
     }
 
     override fun onBackPressed() {
+        super.onBackPressed();
         finish()
     }
 

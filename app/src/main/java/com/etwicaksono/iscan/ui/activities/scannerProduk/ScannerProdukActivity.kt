@@ -80,7 +80,7 @@ class ScannerProdukActivity : BaseActivity() {
 
 //        Parameters default
         codeScanner.camera = CodeScanner.CAMERA_BACK
-        codeScanner.formats = listOf(BarcodeFormat.CODE_128)
+        codeScanner.formats = CodeScanner.ALL_FORMATS
         codeScanner.autoFocusMode = AutoFocusMode.SAFE
         codeScanner.scanMode = ScanMode.SINGLE
         codeScanner.isAutoFocusEnabled = true
@@ -107,6 +107,7 @@ class ScannerProdukActivity : BaseActivity() {
 
 
     override fun onBackPressed() {
+        super.onBackPressed();
         startActivity(Intent(this , HomeActivity::class.java))
         finish()
     }
@@ -115,6 +116,7 @@ class ScannerProdukActivity : BaseActivity() {
     override fun onResume() {
         super.onResume()
         codeScanner.startPreview()
+        binding.tvBarcodeValue.text = getText(R.string.empty_barcode_value)
     }
 
     override fun onPause() {

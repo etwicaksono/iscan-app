@@ -90,6 +90,7 @@ class DetailProdukActivity : BaseActivity() , View.OnClickListener {
     }
 
     override fun onBackPressed() {
+        super.onBackPressed();
         finish()
     }
 
