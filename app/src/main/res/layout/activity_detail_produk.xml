@@ -66,16 +66,16 @@
                         android:focusableInTouchMode="true" />
 
                     <com.viewpagerindicator.CirclePageIndicator
+                        android:id="@+id/indicator"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/indicator"
                         android:layout_marginHorizontal="12dp"
-                        app:centered="true"
-                        app:snap="true"
                         android:layout_marginTop="8dp"
-                        app:pageColor="#999999"
+                        android:padding="10dp"
+                        app:centered="true"
                         app:fillColor="@color/colorPrimary"
-                        android:padding="10dp"/>
+                        app:pageColor="#999999"
+                        app:snap="true" />
 
 
                     <TextView
@@ -90,14 +90,16 @@
                         tools:text="Rp. 175. 000" />
 
                     <TextView
+                        android:id="@+id/tv_nama_toko"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="12dp"
                         android:layout_marginTop="19dp"
                         android:layout_marginRight="12dp"
-                        android:text="@string/barcode_text"
                         android:textColor="@color/dark_blue"
-                        android:textSize="14sp" />
+                        android:drawableLeft="@drawable/store_black_1"
+                        android:textSize="14sp"
+                        tools:text="Nama Toko" />
 
                     <TextView
                         android:id="@+id/tv_barcode_value"

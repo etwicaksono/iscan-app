@@ -41,6 +41,7 @@ class DetailProdukActivity : BaseActivity() , View.OnClickListener {
         binding.tvBarcodeValue.text = dataProduk?.kode
         binding.tvNamaProduk.text = dataProduk?.nama
         binding.tvDetailProduk.text = dataProduk?.deskripsi
+        binding.tvNamaToko.text=dataProduk?.deskripsi
 
         binding.btnConfirm.setOnClickListener(this)
         binding.btnReset.setOnClickListener(this)

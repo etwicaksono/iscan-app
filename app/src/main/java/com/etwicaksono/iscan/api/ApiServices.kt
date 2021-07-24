@@ -5,8 +5,8 @@ import com.etwicaksono.iscan.data.TokoEntity
 import com.etwicaksono.iscan.data.responses.WrappedListResponses
 import com.etwicaksono.iscan.data.responses.WrappedResponses
 import io.reactivex.rxjava3.core.Observable
-import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.Response
+import retrofit2.http.*
 
 interface ApiServices {
     //    GET RECENT TOKO
@@ -22,6 +22,13 @@ interface ApiServices {
         @Query("barcode") barcode: String? ,
         @Query("type") type: String = "single"
     ): Observable<WrappedResponses<TokoEntity>>
+
+//PUT TOKO update scan_count
+    @FormUrlEncoded
+    @PUT("toko")
+    fun updateScanCount(
+    @Field("id")id:String?
+    ):Observable<WrappedResponses<Boolean>>
 
     //    GET PRODUK BY BARCODE
     @GET("produk")

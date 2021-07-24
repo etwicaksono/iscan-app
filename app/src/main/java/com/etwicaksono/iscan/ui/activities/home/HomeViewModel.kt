@@ -33,6 +33,20 @@ class HomeViewModel : ViewModel() {
         )
     }
 
+    fun updateScanCount(idToko: String?) {
+        state.value = HomeState.IsLoading(true)
+        CompositeDisposable().add(
+            api.updateScanCount(idToko).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread()).subscribe({
+                    if (it.status != 200) state.value = HomeState.Error(it.message)
+                    state.value = HomeState.IsLoading()
+                } , {
+                    state.value = HomeState.Error(it.message)
+                    state.value = HomeState.IsLoading()
+                })
+        )
+    }
+
     fun getToko() = toko
     fun getState() = state
 
